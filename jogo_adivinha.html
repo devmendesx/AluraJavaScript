@@ -1,0 +1,34 @@
+<html>
+    <script>
+        function pulaLinha(){
+            document.write("<br>");
+            //document.write("<br>");
+        }
+        function mostra(frase){
+            document.write(frase);
+            pulaLinha();
+        }
+        function sorteia(n){
+            return Math.round(Math.random() * n);
+        }
+        function adivinha(){
+            var num;
+            var tentativas = 1;
+            do{
+                var numeroPensado = sorteia(10);
+                num = parseInt(prompt("Digite um número: "));
+                mostra("Pensei no: "+numeroPensado+ " Seu chute: " + num);
+                mostra("Tente novamente! "+ "Número de tentativas: " + tentativas);
+                tentativas++;
+                    if(num<numeroPensado){
+                        mostra("Seu chute foi menor!");
+                    }else
+                        if(num>numeroPensado){
+                            mostra("Seu chute foi maior!");
+                        }
+            }while(num!=numeroPensado);
+            alert("Parabéns, você acertou!" + " Número de tentativas: " + tentativas);
+        }
+        adivinha();
+    </script>
+</html>

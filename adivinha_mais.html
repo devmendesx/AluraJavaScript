@@ -13,23 +13,48 @@
         <button>Compare</button>
     </div>
     <script>
-        var input = document.querySelector("input");
-        var numThought = Math.round(Math.random() * 10);
+        function sorteia(){
+            return Math.round(Math.random() * 10);
+        }
+        function sorteiaNumeros(quantidade) {
+            var segredos = [];
+            var numero = 1;
+            while(numero <= quantidade) {
+                var numRandom = sorteia();
+                var verific = false;
+                if (numRandom != 0) {
+                        for(var posicao = 0; posicao < segredos.length; posicao++) {
+                            if(segredos[posicao] == numRandom){
+                                    verific = true;
+                                    break;
+                            }
+                        }
+                        if (verific == false) {
+                            segredos.push(numRandom);
+                            numero++;
+                        }
+                }
 
+            }
+
+            return segredos;
+    }
+        var input = document.querySelector("input");
+        var numThought = sorteiaNumeros(4);
+        console.log(numThought);
+        input.focus();
         function verific(){
-            if(input.value == numThought){
-                alert("Parabéns, você acertou!");
-            }else
-                if(input.value > numThought){
-                    alert("Seu número é maior!");
-                    input.focus();
-                    input.value = "";
-                }else
-                    if(input.value < numThought){
-                        alert("Seu número é menor!");
-                        input.value = "";
-                        input.focus();
-                    }
+            var verific = false;
+            for(posicao = 0; posicao<numThought.length; posicao++){
+                if(input.value == numThought[posicao]){
+                    alert("Parabéns, você acertou!");
+                    verific = true;
+                    break;
+                }
+            }
+            if(verific == false){
+                 alert("Você errou!");   
+                }
         }
         var button = document.querySelector("button");
         button.onclick = verific;

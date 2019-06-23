@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .campo{
+            text-align: center;
+        }
+
+    </style>
+    <meta charset="utf-8">
+    <div class="campo">
+        <h1>Adivinha</h1>
+        <input/>
+        <button>Compare</button>
+    </div>
+    <script>
+        var input = document.querySelector("input");
+        var numThought = Math.round(Math.random() * 10);
+
+        function verific(){
+            if(input.value == numThought){
+                alert("Parabéns, você acertou!");
+            }else
+                if(input.value > numThought){
+                    alert("Seu número é maior!");
+                    input.focus();
+                    input.value = "";
+                }else
+                    if(input.value < numThought){
+                        alert("Seu número é menor!");
+                        input.value = "";
+                        input.focus();
+                    }
+        }
+        var button = document.querySelector("button");
+        button.onclick = verific;
+    </script>
+</html>
